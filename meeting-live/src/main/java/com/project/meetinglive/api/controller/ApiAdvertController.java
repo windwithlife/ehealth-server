@@ -184,8 +184,13 @@ public class ApiAdvertController {
             resMessage.addKey$Value("playNumber", liveRoomModel.getPlayNumber());
             resMessage.addKey$Value("pushServerUrl", liveRoomModel.getPushServerUrl());
             resMessage.addKey$Value("pushSecretKey", liveRoomModel.getPushSecretKey());
-            resMessage.addKey$Value("pullFlvUrl", liveRoomModel.getPullFlvUrl());
             resMessage.addKey$Value("videoMp4Url", liveRoomModel.getVideoMp4Url());
+            resMessage.addKey$Value("roomStatus", liveRoomModel.getRoomStatus());
+            resMessage.addKey$Value("publishStatus", liveRoomModel.getPublishStatus());
+            resMessage.addKey$Value("pullHlsUrl", liveRoomModel.getPullHlsUrl());
+            resMessage.addKey$Value("pullRtmpUrl", liveRoomModel.getPullRtmpUrl());
+            resMessage.addKey$Value("pullFlvUrl", liveRoomModel.getPullFlvUrl());
+            resMessage.addKey$Value("pullUdpUrl", liveRoomModel.getPullUdpUrl());
             resMessage.setStatus(ResponseMessage.SUCCESS_CODE);
             resMessage.setMessage(ResponseMessage.SUCCESS_MESSAGE);
         } catch (Exception e) {
