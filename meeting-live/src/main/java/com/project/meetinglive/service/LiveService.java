@@ -95,8 +95,9 @@ public class LiveService {
         String roomPicPath = jsonMessage.getString("roomPicPath");
         String roomSchedulePath = jsonMessage.getString("roomSchedulePath");
         String roomDescPath = jsonMessage.getString("roomDescPath");
+        String roomDesc = jsonMessage.getString("roomDesc");
         Date startDate = DateUtil.StringToDate(jsonMessage.getString("liveStartDate"));
-        LiveRoomModel.validateAddLiveParam(roomTitle, roomPicPath, roomSchedulePath, roomDescPath,
+        LiveRoomModel.validateAddLiveParam(roomTitle, roomPicPath, roomSchedulePath, roomDesc,
             startDate);
         //step2:添加会议信息
         LiveRoomModel liveRoomModel = new LiveRoomModel();
@@ -104,6 +105,7 @@ public class LiveService {
         liveRoomModel.setRoomPicPath(roomPicPath);
         liveRoomModel.setRoomSchedulePath(roomSchedulePath);
         liveRoomModel.setRoomDescPath(roomDescPath);
+        liveRoomModel.setRoomDesc(roomDesc);
         liveRoomModel.setLiveStartDate(startDate);
         this.roomDao.addLive(liveRoomModel);
         int id = liveRoomModel.getId();
@@ -246,10 +248,11 @@ public class LiveService {
         String roomPicPath = jsonMessage.getString("roomPicPath");
         String roomSchedulePath = jsonMessage.getString("roomSchedulePath");
         String roomDescPath = jsonMessage.getString("roomDescPath");
+        String roomDesc = jsonMessage.getString("roomDesc");
         Date startDate = DateUtil.StringToDate(jsonMessage.getString("liveStartDate"));
         String videoMp4Url = jsonMessage.getString("videoMp4Url");
         LiveRoomModel.validateUpdateLiveParam(id, roomTitle, roomPicPath, roomSchedulePath,
-            roomDescPath, startDate, videoMp4Url);
+            roomDesc, startDate, videoMp4Url);
         //step2:查询会议信息
         LiveRoomModel liveRoomModel = this.roomDao.getLiveRoomById(id);
         if (liveRoomModel == null) {
@@ -260,6 +263,7 @@ public class LiveService {
         liveRoomModel.setRoomPicPath(roomPicPath);
         liveRoomModel.setRoomSchedulePath(roomSchedulePath);
         liveRoomModel.setRoomDescPath(roomDescPath);
+        liveRoomModel.setRoomDesc(roomDesc);
         liveRoomModel.setLiveStartDate(startDate);
         liveRoomModel.setVideoMp4Url(videoMp4Url);
         this.roomDao.updateLive(liveRoomModel);

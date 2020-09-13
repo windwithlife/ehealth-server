@@ -144,7 +144,7 @@ public class LiveRoomModel implements Serializable {
      * @param startDate
      */
     public static void validateAddLiveParam(String roomTitle, String roomPicPath,
-                                            String roomSchedulePath, String roomDescPath,
+                                            String roomSchedulePath, String roomDesc,
                                             Date startDate) {
         if (StringUtils.isBlank(roomTitle)) {
             throw new ServiceException("会议名称不能为空!");
@@ -155,8 +155,8 @@ public class LiveRoomModel implements Serializable {
         if (StringUtils.isBlank(roomSchedulePath)) {
             throw new ServiceException("日程图片不能为空!");
         }
-        if (StringUtils.isBlank(roomDescPath)) {
-            throw new ServiceException("介绍图片不能为空!");
+        if (StringUtils.isBlank(roomDesc)) {
+            throw new ServiceException("介绍内容不能为空!");
         }
         if (startDate == null) {
             throw new ServiceException("开始时间不能为空!");
@@ -172,7 +172,7 @@ public class LiveRoomModel implements Serializable {
      * @param startDate
      */
     public static void validateUpdateLiveParam(Integer id, String roomTitle, String roomPicPath,
-                                            String roomSchedulePath, String roomDescPath,
+                                            String roomSchedulePath, String roomDesc,
                                                Date startDate, String videoMp4Url) {
         if (id == null || id == 0) {
             throw new ServiceException("会议ID不能为空!");
@@ -186,8 +186,8 @@ public class LiveRoomModel implements Serializable {
         if (StringUtils.isBlank(roomSchedulePath)) {
             throw new ServiceException("日程图片不能为空!");
         }
-        if (StringUtils.isBlank(roomDescPath)) {
-            throw new ServiceException("介绍图片不能为空!");
+        if (StringUtils.isBlank(roomDesc)) {
+            throw new ServiceException("介绍内容不能为空!");
         }
         if (startDate == null) {
             throw new ServiceException("开始时间不能为空!");

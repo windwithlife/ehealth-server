@@ -180,6 +180,7 @@ public class ApiAdvertController {
             resMessage.addKey$Value("roomQrCodePath", liveRoomModel.getRoomQrCodePath());
             resMessage.addKey$Value("roomSchedulePath", liveRoomModel.getRoomSchedulePath());
             resMessage.addKey$Value("roomDescPath", liveRoomModel.getRoomDescPath());
+            resMessage.addKey$Value("roomDesc", liveRoomModel.getRoomDesc());
             resMessage.addKey$Value("liveStartDate", liveRoomModel.getLiveStartDate());
             resMessage.addKey$Value("playNumber", liveRoomModel.getPlayNumber());
             resMessage.addKey$Value("pushServerUrl", liveRoomModel.getPushServerUrl());

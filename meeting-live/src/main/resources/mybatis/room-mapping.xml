@@ -82,7 +82,7 @@
        update live_room 
                set   
                 room_title=#{roomTitle},room_pic_path=#{roomPicPath},room_qrCode_path=#{roomQrCodePath},
-                room_schedule_path=#{roomSchedulePath},room_desc_path=#{roomDescPath},video_mp4_url=#{videoMp4Url},
+                room_schedule_path=#{roomSchedulePath},room_desc_path=#{roomDescPath},room_desc=#{roomDesc},video_mp4_url=#{videoMp4Url},
                 live_start_date=#{liveStartDate},updated_date=now()
                where id=#{id} 
     </update>
@@ -90,8 +90,8 @@
     <!-- 添加会议信息@author hejinguo -->
     <insert id="addLive" parameterType="com.project.meetinglive.modal.LiveRoomModel" useGeneratedKeys="true" keyProperty="id">
         <![CDATA[    
-           insert into live_room(room_title,room_pic_path,room_schedule_path,room_desc_path,live_start_date,created_date,created_name) 
-                  values (#{roomTitle},#{roomPicPath},#{roomSchedulePath},#{roomDescPath},#{liveStartDate},now(),#{createdName})      
+           insert into live_room(room_title,room_pic_path,room_schedule_path,room_desc_path,room_desc,live_start_date,created_date,created_name) 
+                  values (#{roomTitle},#{roomPicPath},#{roomSchedulePath},#{roomDescPath},#{roomDesc},#{liveStartDate},now(),#{createdName})      
         ]]>
     </insert>
     
