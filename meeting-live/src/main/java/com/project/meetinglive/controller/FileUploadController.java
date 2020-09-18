@@ -1,14 +1,18 @@
 package com.project.meetinglive.controller;
 
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +24,8 @@ import com.project.meetinglive.common.util.JsonUtil;
 import com.project.meetinglive.core.data.message.ResponseMessage;
 import com.project.meetinglive.core.data.request.JsonMessage;
 import com.project.meetinglive.core.exception.CommonExceptionHandle;
+import com.project.meetinglive.core.exception.ServiceException;
+import com.project.meetinglive.core.freemarker.FreeMarkerHelp;
 import com.project.meetinglive.core.spring.interceptor.annotation.LoginRequired;
 import com.project.meetinglive.core.token.ValidateLoginHelp;
 
@@ -87,6 +93,37 @@ public class FileUploadController {
             resMessage.addKey$Value("picPath", url);
             resMessage.setStatus(ResponseMessage.SUCCESS_CODE);
             resMessage.setMessage("上传成功!");
+        } catch (Exception e) {
+            CommonExceptionHandle.handleException(resMessage, jsonMessage, request, e);
+        }
+        return resMessage;
+    }
+    
+    /**
+     * html文件生成
+     * @param request
+     * @return
+     */
+    @PostMapping(value = { "/initTemplatesHtml" }, produces = { "application/json" })
+    @LoginRequired
+    public @ResponseBody ResponseMessage initTemplatesHtml(@RequestBody JsonMessage jsonMessage,
+                                                           HttpServletRequest request,
+                                                           HttpServletResponse response) {
+        //返回对象
+        ResponseMessage resMessage = new ResponseMessage(jsonMessage);
+        try {
+            //step1:生成HTML文件
+            String htmlDesc = jsonMessage.getString("htmlDesc");
+            if (StringUtils.isBlank(htmlDesc)) {
+                throw new ServiceException("文本信息不能为空!");
+            }
+            Map<String, Object> paramMap = new HashMap<String, Object>();
+            paramMap.put("advDesc", htmlDesc);
+            String fileUrl = FreeMarkerHelp.makeHtml("information.ftl", paramMap);
+            //step3:返回结果
+            resMessage.addKey$Value("fileUrl", fileUrl);
+            resMessage.setStatus(ResponseMessage.SUCCESS_CODE);
+            resMessage.setMessage(ResponseMessage.SUCCESS_MESSAGE);
         } catch (Exception e) {
             CommonExceptionHandle.handleException(resMessage, jsonMessage, request, e);
         }
