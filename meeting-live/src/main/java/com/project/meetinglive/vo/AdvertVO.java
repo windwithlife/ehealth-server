@@ -1,6 +1,7 @@
 package com.project.meetinglive.vo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 资讯返回数据
@@ -22,6 +23,13 @@ public class AdvertVO implements Serializable {
     private String            advPicPath;
 
     private String            advSource;
+
+    private Date              startDate;
+
+    /**
+     * 结束时间
+     */
+    private Date              endDate;
     /**
      * 点击量
      */
@@ -76,5 +84,9 @@ public class AdvertVO implements Serializable {
     public void setAdvDesc(String advDesc) {
         this.advDesc = advDesc;
     }
+    public void setStartDate(Date startDate){this.startDate = startDate;}
+    public Date getStartDate(){return this.startDate;}
+    public void setEndDate(Date endDate){this.endDate = endDate;}
+    public Date getEndDate(){return this.endDate;}
 
 }

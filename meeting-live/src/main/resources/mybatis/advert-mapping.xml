@@ -19,7 +19,7 @@
     <select id="getInformationList"  resultType="com.project.meetinglive.vo.AdvertVO">
       <![CDATA[
          SELECT  a.id,a.adv_title advTitle,a.adv_pic_path  advPicPath,
-                 a.adv_source advSource,a.click_number clickNumber
+                 a.adv_source advSource,a.click_number clickNumber,a.start_date startDate,a.end_date endDate
                  FROM  live_advert  a  
                  WHERE a.adv_type=1 
                     AND a.application_type=0 AND a.adv_status=1  
