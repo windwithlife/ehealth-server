@@ -35,11 +35,22 @@ public class LiveRoomModel implements Serializable {
      * 日程图片地址
      */
     private String            roomSchedulePath;
+
+    /**
+     * 日程描述信息
+     */
+    private String            roomScheduleInfo;
+
     /**
      * 介绍图片地址
      */
     private String            roomDescPath;
 
+    /**
+     * 介绍信息
+     */
+
+    private String            roomIntroduce;
     /**
      * 直播内容描述
      */
@@ -395,6 +406,23 @@ public class LiveRoomModel implements Serializable {
 
     public void setRoomDescPath(String roomDescPath) {
         this.roomDescPath = roomDescPath;
+    }
+
+    // add by zhangyongqiao 20200924
+    public String getRoomScheduleInfo() {
+        return this.roomScheduleInfo;
+    }
+
+    public void setRoomScheduleInfo(String roomScheduleInfo) {
+        this.roomScheduleInfo = roomScheduleInfo;
+    }
+
+    public String getRoomIntroduce() {
+        return this.roomIntroduce;
+    }
+
+    public void setRoomIntroduce(String roomIntroduce) {
+        this.roomIntroduce = roomIntroduce;
     }
 
 }

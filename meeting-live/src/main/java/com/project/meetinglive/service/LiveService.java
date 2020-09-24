@@ -96,6 +96,9 @@ public class LiveService {
         String roomSchedulePath = jsonMessage.getString("roomSchedulePath");
         String roomDescPath = jsonMessage.getString("roomDescPath");
         String roomDesc = jsonMessage.getString("roomDesc");
+        // add by zhangyongqiao 2020-09-24
+        String roomScheduleInfo = jsonMessage.getString("roomScheduleInfo");
+        String roomIntroduce    = jsonMessage.getString("roomIntroduce");
         Date startDate = DateUtil.StringToDate(jsonMessage.getString("liveStartDate"));
         LiveRoomModel.validateAddLiveParam(roomTitle, roomPicPath, roomSchedulePath, roomDesc,
             startDate);
@@ -107,6 +110,10 @@ public class LiveService {
         liveRoomModel.setRoomDescPath(roomDescPath);
         liveRoomModel.setRoomDesc(roomDesc);
         liveRoomModel.setLiveStartDate(startDate);
+
+        // add by zhangyongqiao 2020-09-24
+        liveRoomModel.setRoomIntroduce(roomIntroduce);
+        liveRoomModel.setRoomScheduleInfo(roomScheduleInfo);
         this.roomDao.addLive(liveRoomModel);
         int id = liveRoomModel.getId();
         //step3:生成腾讯直播链接
