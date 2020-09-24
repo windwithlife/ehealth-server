@@ -258,6 +258,8 @@ public class LiveService {
         String roomDesc = jsonMessage.getString("roomDesc");
         Date startDate = DateUtil.StringToDate(jsonMessage.getString("liveStartDate"));
         String videoMp4Url = jsonMessage.getString("videoMp4Url");
+        String roomScheduleInfo = jsonMessage.getString("roomScheduleInfo");
+        String roomIntroduce = jsonMessage.getString("roomIntroduce");
         LiveRoomModel.validateUpdateLiveParam(id, roomTitle, roomPicPath, roomSchedulePath,
             roomDesc, startDate, videoMp4Url);
         //step2:查询会议信息
@@ -273,6 +275,8 @@ public class LiveService {
         liveRoomModel.setRoomDesc(roomDesc);
         liveRoomModel.setLiveStartDate(startDate);
         liveRoomModel.setVideoMp4Url(videoMp4Url);
+        liveRoomModel.setRoomScheduleInfo(roomScheduleInfo);
+        liveRoomModel.setRoomIntroduce(roomIntroduce);
         this.roomDao.updateLive(liveRoomModel);
     }
 
