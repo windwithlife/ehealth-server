@@ -83,6 +83,7 @@
        update live_room 
                set   
                 room_title=#{roomTitle},room_pic_path=#{roomPicPath},room_qrCode_path=#{roomQrCodePath},
+                room_introduce=#{roomIntroduce},room_schedule_info=#{roomScheduleInfo},
                 room_schedule_path=#{roomSchedulePath},room_desc_path=#{roomDescPath},room_desc=#{roomDesc},video_mp4_url=#{videoMp4Url},
                 live_start_date=#{liveStartDate},updated_date=now()
                where id=#{id} 
