@@ -166,9 +166,9 @@ public class LiveRoomModel implements Serializable {
 //        if (StringUtils.isBlank(roomSchedulePath)) {
 //            throw new ServiceException("日程图片不能为空!");
 //        }
-        if (StringUtils.isBlank(roomDesc)) {
-            throw new ServiceException("介绍内容不能为空!");
-        }
+//        if (StringUtils.isBlank(roomDesc)) {
+//            throw new ServiceException("介绍内容不能为空!");
+//        }
         if (startDate == null) {
             throw new ServiceException("开始时间不能为空!");
         }
@@ -197,9 +197,9 @@ public class LiveRoomModel implements Serializable {
 //        if (StringUtils.isBlank(roomSchedulePath)) {
 //            throw new ServiceException("日程图片不能为空!");
 //        }
-        if (StringUtils.isBlank(roomDesc)) {
-            throw new ServiceException("介绍内容不能为空!");
-        }
+//        if (StringUtils.isBlank(roomDesc)) {
+//            throw new ServiceException("介绍内容不能为空!");
+//        }
         if (startDate == null) {
             throw new ServiceException("开始时间不能为空!");
         }
