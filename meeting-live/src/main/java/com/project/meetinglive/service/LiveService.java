@@ -24,7 +24,7 @@ import com.project.meetinglive.core.config.ApplicationConfig;
 import com.project.meetinglive.core.data.pageBean.SinglePageBean;
 import com.project.meetinglive.core.data.request.JsonMessage;
 import com.project.meetinglive.core.exception.ServiceException;
-import com.project.meetinglive.core.wechat.WechatUserQrCodeHelp;
+//import com.project.meetinglive.core.wechat.WechatUserQrCodeHelp;
 import com.project.meetinglive.dao.RoomDao;
 import com.project.meetinglive.modal.LiveRoomModel;
 import com.project.meetinglive.vo.LiveListVO;
@@ -141,6 +141,8 @@ public class LiveService {
         
 
         //step4:生成直播链接二维码
+        // updated by zhangyongqiao at 2020-09-25 11:55
+        /*
         String imgName = UUID.randomUUID().toString() + ".png";
         String imgNamePath = BaseUtil.getTempFoderPath() + File.separator + imgName;
         File localFile = new File(imgNamePath);
@@ -167,8 +169,10 @@ public class LiveService {
             logger.error("生成会议微信二维码失败,userWechatQrUrl--->{}", roomQrCodePath);
             throw new ServiceException("生成会议微信二维码失败,请重试!");
         }
+        */
+
         //step5:更新会议信息
-        liveRoomModel.setRoomQrCodePath(roomQrCodePath);
+        //liveRoomModel.setRoomQrCodePath(roomQrCodePath);
         liveRoomModel.setPushServerUrl(pushServerUrl);
         liveRoomModel.setPushSecretKey(pushSecretKey);
         liveRoomModel.setPushExpireDate(pushExpireDate);
