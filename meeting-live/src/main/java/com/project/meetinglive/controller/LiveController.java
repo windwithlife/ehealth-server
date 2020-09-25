@@ -117,6 +117,8 @@ public class LiveController {
             resMessage.addKey$Value("pushSecretKey", liveRoomModel.getPushSecretKey());
             resMessage.addKey$Value("pullFlvUrl", liveRoomModel.getPullFlvUrl());
             resMessage.addKey$Value("videoMp4Url", liveRoomModel.getVideoMp4Url());
+            resMessage.addKey$Value("roomScheduleInfo", liveRoomModel.getRoomScheduleInfo());
+            resMessage.addKey$Value("roomIntroduce", liveRoomModel.getRoomIntroduce());
             resMessage.setStatus(ResponseMessage.SUCCESS_CODE);
             resMessage.setMessage(ResponseMessage.SUCCESS_MESSAGE);
         } catch (Exception e) {
