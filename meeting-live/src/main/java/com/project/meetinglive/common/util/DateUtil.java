@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
@@ -56,6 +57,7 @@ public class DateUtil {
      */
     public static Date StringToDate(String date) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat(TIMESTAMP_PATTERN);
+        format.setTimeZone(TimeZone.getTimeZone("GMT+0"));
         Date newDate = null;
         if (date == null || date.trim().length() == 0) {
             return null;
