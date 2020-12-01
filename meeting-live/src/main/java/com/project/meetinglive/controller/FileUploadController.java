@@ -8,9 +8,11 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.project.meetinglive.service.MultimediaService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +40,9 @@ import com.project.meetinglive.core.token.ValidateLoginHelp;
 @RequestMapping("/uploadService")
 public class FileUploadController {
     private static final Logger logger = LoggerFactory.getLogger(UsersController.class);
+
+    @Autowired
+    private MultimediaService multimediaService;
 
     /**
      * 图片上传
@@ -80,16 +85,25 @@ public class FileUploadController {
                 resMessage.setMessage("上传的文件不是图片!");
                 return resMessage;
             }
-            Map<String, Object> uploadMap = FileUploadHelp.imageUpload(files);
-            int status = Integer.valueOf(String.valueOf(uploadMap.get("status")));
-            if (status == 0) {
-                String message = String.valueOf(uploadMap.get("message"));
+            // modified by zhangyongqiao at 2020-12-01-20-05
+            String fileUrl = this.multimediaService.uploadImage("public",files);
+            if(null == fileUrl){
+                String message = "Failed to upload image!";
                 logger.error(message);
                 resMessage.setMessage(message);
                 resMessage.setStatus(ResponseMessage.FAILURE_CODE);
                 return resMessage;
             }
-            String url = String.valueOf(uploadMap.get("fileUrl"));
+//            Map<String, Object> uploadMap = FileUploadHelp.imageUpload(files);
+//            int status = Integer.valueOf(String.valueOf(uploadMap.get("status")));
+//            if (status == 0) {
+//                String message = String.valueOf(uploadMap.get("message"));
+//                logger.error(message);
+//                resMessage.setMessage(message);
+//                resMessage.setStatus(ResponseMessage.FAILURE_CODE);
+//                return resMessage;
+//            }
+            String url = fileUrl; //String.valueOf(uploadMap.get("fileUrl"));
             resMessage.addKey$Value("picPath", url);
             resMessage.setStatus(ResponseMessage.SUCCESS_CODE);
             resMessage.setMessage("上传成功!");

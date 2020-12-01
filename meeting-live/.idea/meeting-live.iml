@@ -115,5 +115,8 @@
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp:logging-interceptor:2.7.5" level="project" />
+    <orderEntry type="library" name="Maven: com.qiniu:qiniu-java-sdk:7.2.7" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.qiniu:happy-dns-java:0.1.4" level="project" />
   </component>
 </module>
