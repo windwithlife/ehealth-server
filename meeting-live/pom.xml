@@ -23,7 +23,7 @@
 			<id>nexus</id>
 			<name>maven-public</name>
 <!--			<url>http://10.0.3.240:8081/repository/maven-public/</url>-->
-			 <url>http://maven.oschina.net/content/groups/public/</url>
+			 <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
     <distributionManagement>
