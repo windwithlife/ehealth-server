@@ -15,13 +15,15 @@ public class MultimediaUtils {
     private Auth auth ;
     private String upToken;
     private String domainName = "images.koudaibook.com";
+    private String bucket;
 
     public void init(String accessKey, String secretKey, String bucket,String domainName){
         this.domainName = domainName;
+        this.bucket = bucket;
         Configuration cf = new Configuration(Zone.zone0());
         uploadManager = new UploadManager(cf);
         auth = Auth.create(accessKey, secretKey);
-        upToken = auth.uploadToken(bucket);
+        //upToken = auth.uploadToken(bucket);
 
     }
     private String fileName(String group , String originalFilename) {
@@ -34,8 +36,9 @@ public class MultimediaUtils {
         try {
             if(null == group){group = "public";}
             String key = fileName(group , file.getOriginalFilename());
+            this.upToken = this.auth.uploadToken(this.bucket);
             System.out.println("current filename ==>" +  key +"upToken==>" + upToken);
-            Response response = uploadManager.put(file.getBytes(), key, upToken);
+            Response response = uploadManager.put(file.getBytes(), key, this.upToken);
             if(response.isOK()) {
                 System.out.println("current status ==> OK");
                 return this.domainName + "/" + key;
