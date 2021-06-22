@@ -1,0 +1,24 @@
+kind: pipeline
+type: docker
+name: ehealth-server
+
+steps:
+  - name: build
+    image: maven:3-jdk-10
+    volumes:
+      - name : mvncache
+        path : /root/.m2
+    commands:
+      - echo 'test echo'
+      - cd  ./service
+      - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B
+volumes:
+  - name: mvncache
+    host:
+      path: /var/lib/cache/.m2
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
